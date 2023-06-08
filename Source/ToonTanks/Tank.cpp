@@ -44,7 +44,26 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATank::Move(const FInputActionValue& Value)
 {
 	FVector2D MovementVector = Value.Get<FVector2D>();
-	UE_LOG(LogTemp, Warning, TEXT("%f, %f"), MovementVector.Y, MovementVector.X);
+	FVector DeltaLocation(0.f);
+	DeltaLocation.X = MovementVector.Y;
+	DeltaLocation.Y = MovementVector.X;
+	AddActorLocalOffset(DeltaLocation);
+	//if (Controller != nullptr)
+	//{
+	//	// find out wich way is forward
+	//	const FRotator Rotation = Controller->GetControlRotation();
+	//	const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+	//	// get right vector
+	//	const FVector ForwardDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+
+	//	// get right vector
+	//	const FVector RightDirection = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+
+	//	// add movement
+	//	AddMovementInput(ForwardDirection, MovementVector.Y);
+	//	AddMovementInput(RightDirection, MovementVector.X);
+	//}
 }
 
 
