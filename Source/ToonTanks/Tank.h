@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "BasePawn.h"
-#include "InputActionValue.h"
 #include "Tank.generated.h"
 
 /**
@@ -28,15 +27,12 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class USpringArmComponent* SpringArm;
+
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* Camera;
 
-	/** MappingContext */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputMappingContext* DefaultMappingContext;
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float Speed = 200.f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
-	class UInputAction* MoveAction;
-
-	void Move(const FInputActionValue& Value);
+	void Move(float Value);
 };
