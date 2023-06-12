@@ -19,6 +19,8 @@ void ATank::BeginPlay()
 {
 	// Call the base class  
 	Super::BeginPlay();
+	
+	PlayerControllerRef = Cast<APlayerController>(GetController());
 }
 
 // Called to bind functionality to input
