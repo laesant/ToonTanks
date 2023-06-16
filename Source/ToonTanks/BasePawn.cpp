@@ -39,7 +39,7 @@ void ABasePawn::Fire()
 	GetWorld()->SpawnActor<AProjectile>(
 		ProjectileClass,
 		ProjectileSpawnPoint->GetComponentLocation(),
-		ProjectileSpawnPoint->GetComponentRotation());
+		ProjectileSpawnPoint->GetComponentRotation())->SetOwner(this);
 }
 
 
